@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /package/dist
-
+TODO.md
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/

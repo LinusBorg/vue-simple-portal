@@ -1,5 +1,14 @@
 {
   "name": "vue-simple-portal",
+  "description": "A simple Portal implementation for Vue, to mount slot content to any element",
+  "author": {
+    "name": "Thorsten Lünborg",
+    "url": "https://www.github.com/linusborg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linusborg/vue-simple-portal"
+  },
   "version": "0.0.0",
   "private": true,
   "scripts": {
