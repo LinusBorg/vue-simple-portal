@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve demo/main.js",
+    "build:demo": "vue-cli-service build demo/main.js",
+    "build": "vue-cli-service build --target lib --name VueSimplePortal --dest package/dist src/index.js",
+    "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
-  },
-  "dependencies": {
-    "vue": "^2.6.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
@@ -26,6 +24,7 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.0",
+    "prettier-eslint": "^8.8.2",
     "vue-template-compiler": "^2.5.21"
   },
   "gitHooks": {
