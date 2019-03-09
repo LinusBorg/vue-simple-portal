@@ -2,20 +2,20 @@
 
 <!-- markdownlint-disable MD025 MD033 -->
 
-## Usage
+## What this is
 
-Given this html page, pretty general setup for a Vue app:
+`vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on he page) as an immediate child.
 
-The portal can be used to mount it slot content to the very end of the body element as an immediate child.
-
-This is generally useful for components/elements that need to be positioned absolutely or fixed in some way or another, like:
+Its main usecase are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
 
 * modals
 * drodowns
 * Alerts/notifications
 * Toasts
 
-Minimal example
+## Usage
+
+Minimal example:
 
 ```html
 <body>
@@ -57,7 +57,7 @@ That' turned out pretty well, but there were two issues that I found over time, 
 
 <details>
   <summary>
-    Click here if you want to know more 
+    Click here if you want to know more
   </summary>
 
 ### Drawbacks of `portal-vue`
@@ -87,11 +87,11 @@ So I experimented a little and came up with this library here, which solves thes
 
 ```bash
 npm i -g vue-simple-portal
-# or 
+# or
 yarn add vue-simple-portal
 ```
 
-**Install plugin (Optional)**
+#### Install plugin (Optional)
 
 This will make the `<portal>` component available globally
 
@@ -105,7 +105,7 @@ Vue.use(VuePortal, {
 })
 ```
 
-**Or install locally**
+#### Or install locally*
 
 ```javascript
 // in a component definition
