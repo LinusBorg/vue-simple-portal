@@ -5,7 +5,7 @@ import TargetContainer from './TargetContainer'
 export default Vue.extend({
   name: 'VuePortal',
   props: {
-    append: {
+    prepend: {
       type: Boolean,
     },
     disabled: {
@@ -27,11 +27,15 @@ export default Vue.extend({
     return h()
   },
   created() {
-    if (!this.getEl()) {
+    if (!this.getTargetEl()) {
       this.insertContainerEl()
     }
   },
   updated() {
+    // we only update the target container component
+    // if the scoped slot function is a fresh one
+    // The new slot syntax (since Vue 2.6) can cache unchanged slot functions
+    // and we want to respect that here.
     this.$nextTick(() => {
       if (!this.disabled && this.slotFn !== this.$scopedSlots.default) {
         this.container.updatedNodes = this.$scopedSlots.default
@@ -51,27 +55,26 @@ export default Vue.extend({
     },
   },
   methods: {
-    getEl() {
+    // This returns the element into which the content should be mounted.
+    getTargetEl() {
       return document.querySelector(this.selector)
     },
     insertContainerEl() {
       const parent = document.querySelector('body')
       const child = document.createElement(this.tag)
       child.id = this.selector
-
-      if (this.append) {
-        parent.firstChild
-          ? parent.firstChild.inserBefore(child)
-          : parent.append(child)
-      } else {
-        parent.append(child)
-      }
+      parent.append(child)
     },
     mount() {
-      // console.log('mounting')
-      const targetEl = this.getEl()
+      const targetEl = this.getTargetEl()
       const el = document.createElement('DIV')
-      targetEl.append(el)
+
+      if (this.prepend && targetEl.firstChild) {
+        targetEl.firstChild.inserBefore(el)
+      } else {
+        targetEl.append(el)
+      }
+
       this.container = new TargetContainer({
         el,
         parent: this,
@@ -82,7 +85,6 @@ export default Vue.extend({
       })
     },
     unmount() {
-      // console.log('unmounting')
       if (this.container) {
         const el = this.container.$el
         this.container.$destroy()
