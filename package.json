@@ -10,6 +10,9 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
+  "peerDependencies": {
+    "vue": "^2.6.0"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-e2e-cypress": "^3.4.0",
