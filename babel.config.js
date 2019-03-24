@@ -4,7 +4,8 @@ module.exports = {
       '@vue/app',
       {
         useBuiltIns: false,
-        ployfills: false,
+        polyfills: false,
+        corejs: 2,
       },
     ],
   ],

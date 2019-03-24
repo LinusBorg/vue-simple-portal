@@ -13,7 +13,7 @@ export default Vue.extend({
     },
     selector: {
       type: String,
-      default: () => config.selector,
+      default: () => `#${config.selector}`,
     },
     tag: {
       type: String,
@@ -28,11 +28,11 @@ export default Vue.extend({
   },
   created() {
     if (!this.getTargetEl()) {
-      this.insertContainerEl()
+      this.insertTargetEl(this.selector)
     }
   },
   updated() {
-    // we only update the target container component
+    // We only update the target container component
     // if the scoped slot function is a fresh one
     // The new slot syntax (since Vue 2.6) can cache unchanged slot functions
     // and we want to respect that here.
@@ -59,16 +59,15 @@ export default Vue.extend({
     getTargetEl() {
       return document.querySelector(this.selector)
     },
-    insertContainerEl() {
+    insertTargetEl() {
       const parent = document.querySelector('body')
       const child = document.createElement(this.tag)
-      child.id = this.selector
+      child.id = config.selector
       parent.append(child)
     },
     mount() {
       const targetEl = this.getTargetEl()
       const el = document.createElement('DIV')
-
       if (this.prepend && targetEl.firstChild) {
         targetEl.firstChild.inserBefore(el)
       } else {

@@ -7,10 +7,10 @@ export default Vue.extend({
   abstract: true,
   name: 'PortalOutlet',
   props: ['nodes', 'tag'],
-  data: () => ({
-    updatedNodes: this.nodes,
+  data: vm => ({
+    updatedNodes: vm.nodes,
   }),
   render(h) {
-    return h(this.tag || 'DIV', this.updatedNodes())
+    return h(this.tag || 'DIV', this.updatedNodes && this.updatedNodes())
   },
 })
