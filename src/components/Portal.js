@@ -5,10 +5,10 @@ import TargetContainer from './TargetContainer'
 export default Vue.extend({
   name: 'VuePortal',
   props: {
-    prepend: {
+    disabled: {
       type: Boolean,
     },
-    disabled: {
+    prepend: {
       type: Boolean,
     },
     selector: {
@@ -28,7 +28,7 @@ export default Vue.extend({
   },
   created() {
     if (!this.getTargetEl()) {
-      this.insertTargetEl(this.selector)
+      this.insertTargetEl()
     }
   },
   updated() {
