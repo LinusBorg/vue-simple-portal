@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Portal from './components/Portal'
-import config from './config'
+import { setSelector } from './config'
 
 function install(_Vue, options = {}) {
   _Vue.component(options.name || 'portal', Portal)
   if (options.defaultSelector) {
-    config.selector = options.defaultSelector
+    setSelector(options.defaultSelector)
   }
 }
 
@@ -15,4 +15,4 @@ if (typeof window !== 'undefined' && window.Vue && window.Vue === Vue) {
 }
 
 export default install
-export { Portal, config }
+export { Portal, setSelector }
