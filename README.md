@@ -45,13 +45,13 @@ Minimal example:
 
 TODO: Insert jsfiddle
 
-## What's the difference to `portal-vue`
+## How this lib relates to `portal-vue`
 
-I'm the author of [portl-vue](https://github.com/LinusBorg/portal-vue), a pretty popular portal librar for Vue.js, so the obvious question is:
+I'm the author of [portal-vue](https://github.com/LinusBorg/portal-vue), a pretty popular portal library for Vue.js, so the obvious question is:
 
 _Why publish another Portal component?_
 
-Well, `portal-vue` was my first sucessful library, and I new it wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
+Well, `portal-vue` was my first sucessful library, and I wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
 
 That' turned out pretty well, but there were two issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features.
 
@@ -63,7 +63,7 @@ That' turned out pretty well, but there were two issues that I found over time, 
 ### Drawbacks of `portal-vue`
 
 1. Useless Features: As far as I could tell, people didn't really use most of the features. For most people, this lib solved one problem: Moving stuff to the very end of the `<body>` element so they could properly style and position their modals and similar components. For them, portal-vue comes with a lot of extra pounds that they don't need.
-2. The approach that I chose to make the portal-ing work cme with some caveats - the most severe being that, it broke the `$parent <-> $children` chain between the host component and the children that were moved. That also means a couple of things that rely on this chain internally don't work as expected, for example:
+2. The approach that I chose to make the portal-ing work in all the different supported scenarios came with some caveats - the most severe being that it broke the `$parent <-> $children` chain between the host component and the children that were moved. That also means a couple of things that rely on this chain internally don't work as expected, for example:
     * `provide/inject`
     * `<route-view>`
 
@@ -77,7 +77,7 @@ So I experimented a little and came up with this library here, which solves thes
 ### When to use which
 
 * Use `vue-simple-portal` when you want to move stuff to the end of the document only.
-* Use `portal-vue` when you want to do more edge-case things, i.e. move stuff around to anywhere *within* our existing app, like the header component area etc.
+* Use `portal-vue` when you want to do more edge-case things, i.e. move stuff around to anywhere *within* our existing app, like the header component area, dynamically move the same content to different places by changing the destination prop etc.
 
 </details>
 
@@ -91,9 +91,9 @@ npm i -g vue-simple-portal
 yarn add vue-simple-portal
 ```
 
-#### Install plugin (Optional)
+#### Install a a global plugin (Optional)
 
-This will make the `<portal>` component available globally
+This will make the `<portal>` component available globally, but also make the portal not lazy-loadable.
 
 ```javascript
 // main.js
@@ -105,13 +105,13 @@ Vue.use(VuePortal, {
 })
 ```
 
-#### Or install locally*
+#### Or use and register it locally
 
 ```javascript
 // in a component definition
 import { Portal } from 'vue-simple-portal'
 export default {
-  name 'MyComponent,
+  name 'MyComponent',
   components: {
     Portal
   }
@@ -137,7 +137,15 @@ This library aims to do one thing only, and do it well: move stuff to the end of
 
 ## Caveats
 
-Some caveats still exist:
+Some caveats still exist, such as:
+
+### Losing local state when toggling `disabled` prop
+
+When you toggle the `disabled` prop from `true` to `false` or vice versa, any components inside of the portal will be destroyed in their current location and re-created in their new location.
+
+This means all their *local* state is lost.
+
+If you need to keep state between these switches, keep it in a [global state manager](https://vuejs.org/v2/guide/state-management.html)
 
 ## Development
 
