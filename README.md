@@ -53,7 +53,7 @@ _Why publish another Portal component?_
 
 Well, `portal-vue` was my first sucessful library, and I wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
 
-That' turned out pretty well, but there were two issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features.
+That' turned out pretty well, but there were two issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features and (= bundle size) in order to concentrate on the main use case.
 
 <details>
   <summary>
@@ -146,6 +146,48 @@ When you toggle the `disabled` prop from `true` to `false` or vice versa, any co
 This means all their *local* state is lost.
 
 If you need to keep state between these switches, keep it in a [global state manager](https://vuejs.org/v2/guide/state-management.html)
+
+### Transitions
+
+When you use a `<transition>` as the root element of the portal and then remove the portal (i.e. with `v-if`) or set `disabled` to `true`, no leave transition will happen.
+
+This is to expected, as the same thing would happen if you removed a div that contains a `<transition>`, but often trips people up nonetheless.
+
+If you need to remove or disable the portal *after* a transition has finished, you woulld have to work around this like this:
+
+<details>
+  <summary>Show Example</summary>
+  
+```html
+<template>
+  <portal :disabled="disablePortal">
+    <transition name="fade" appear @afterLeave="disablePortal = true">
+      <div v-if="showTransitionContent">
+        this will fade in/out
+      </div>
+    </transition>
+  </portal>
+</template>
+<script>
+  export default {
+    data: () => ({
+      showTransitionContent: true,
+      disablePortal: false,
+    }),
+    methods: {
+      getOut() {
+        // calling this method this will trigger the transition,
+        // which when finished, will disable the Portal
+        // through the `afterLeave` hook callback
+        this.showTransitionContent = false
+
+      }
+    }
+  }
+</script>
+```
+
+</details>
 
 ## Development
 
