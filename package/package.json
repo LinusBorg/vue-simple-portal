@@ -11,6 +11,9 @@
     "url": "https://github.com/linusborg/vue-simple-portal"
   },
   "private": false,
+  "scripts": {
+    "release": "npm publish --access public"
+  },
   "main": "./dist/VuePortal.umd.js",
   "browser": "./dist/VuePortal.common.js",
   "unpkg": "./dist/VuePortal.umd.min.js",

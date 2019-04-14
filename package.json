@@ -5,9 +5,8 @@
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
     "serve": "vue-cli-service serve demo/main.js",
-    "build": "vue-cli-service build --target lib --name VueSimplePortal --dest package/dist src/index.js",
-    "build:bili": "rimraf -r package/dist && bili --format umd --format umd-min --format es --module-name VueSimplePortal -d package/dist",
-    "build:demo": "vue-cli-service build demo/main.js",
+    "build": "rimraf -r package/dist && yarn build:bili && cp README.md package/README.md",
+    "build:bili": "bili --format umd --format umd-min --format es --module-name VueSimplePortal -d package/dist",
     "sb:build": "vue-cli-service storybook:build -c stories/config",
     "sb:serve": "vue-cli-service storybook:serve -p 6006 -c stories/config",
     "sb:dev": "concurrently 'vue-devtools' 'vue-cli-service storybook:serve -p 6006 -c stories/config'",

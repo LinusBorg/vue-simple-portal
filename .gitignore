@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/package/dist
+/package/
 TODO.md
 
 /tests/e2e/videos/
