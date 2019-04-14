@@ -1,46 +1,20 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png" /> <br />
-    <button @click="toggle">Toggle Render</button>
-    <button @click="disablePortal = !disablePortal">Toggle disabled</button>
-    <portal v-if="showPortal" :disabled="disablePortal">
-      <transition name="fade" appear @afterLeave="finishExit">
-        <div v-if="showContent">
-          <p>Test</p>
-          <Test />
-        </div>
-      </transition>
-    </portal>
+    <nav class="nav">
+      <router-link to="/" exact>Base</router-link>
+      <router-link to="/disable">Disable</router-link>
+      <router-link to="/transition">Transition</router-link>
+      <router-link to="/multiple">Multiple</router-link>
+      <router-link to="/custom-target">Custom Target</router-link>
+    </nav>
     <hr />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Test from './components/TestComponent'
 export default {
   name: 'App',
-  components: {
-    Test,
-  },
-  data: () => ({
-    showPortal: true,
-    showContent: true,
-    disablePortal: false,
-  }),
-  methods: {
-    toggle() {
-      if (!this.showPortal) {
-        this.showContent = true
-        this.showPortal = true
-      } else {
-        this.showContent = false
-      }
-    },
-    finishExit() {
-      console.log('finished!')
-      this.showPortal = false
-    },
-  },
 }
 </script>
 
@@ -49,16 +23,23 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  max-width: 850px;
+  height: calc(100vh - 200px);
+  border-bottom: 1px solid #ccc;
+}
+.nav {
+  margin-bottom: 30px;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1.5s;
+.nav > a {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+
+.router-link-active {
+  font-weight: 500;
 }
 </style>

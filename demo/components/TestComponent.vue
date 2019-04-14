@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>This is just a Test Component</h3>
+    <h3 datat-test="test-header">This is just a Test Component</h3>
     <p>
       Its purpose is to check the behaviour of components inside of the Simple
       Portal
