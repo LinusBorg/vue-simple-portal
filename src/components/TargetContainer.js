@@ -11,6 +11,14 @@ export default Vue.extend({
     updatedNodes: vm.nodes,
   }),
   render(h) {
-    return h(this.tag || 'DIV', this.updatedNodes && this.updatedNodes())
+    const nodes = this.updatedNodes && this.updatedNodes()
+    if (!nodes) return h()
+    return nodes.length < 2 && !nodes[0].text
+      ? nodes
+      : h(this.tag || 'DIV', nodes)
+  },
+  destroyed() {
+    const { $el: el } = this
+    el.parentNode.removeChild(el)
   },
 })

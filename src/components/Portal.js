@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import config from '../config'
+import config, { isBrowser } from '../config'
 import TargetContainer from './TargetContainer'
 
 export default Vue.extend({
@@ -22,7 +22,9 @@ export default Vue.extend({
   },
   render(h) {
     if (this.disabled) {
-      return h(this.tag, this.$scopedSlots.default())
+      const nodes = this.$scopedSlots && this.$scopedSlots.default()
+      if (!nodes) return h()
+      return nodes.length < 2 && !nodes[0].text ? nodes : h(this.tag, nodes)
     }
     return h()
   },
@@ -57,9 +59,11 @@ export default Vue.extend({
   methods: {
     // This returns the element into which the content should be mounted.
     getTargetEl() {
+      if (!isBrowser) return
       return document.querySelector(this.selector)
     },
     insertTargetEl() {
+      if (!isBrowser) return
       const parent = document.querySelector('body')
       const child = document.createElement(this.tag)
       child.id = config.selector
@@ -69,7 +73,7 @@ export default Vue.extend({
       const targetEl = this.getTargetEl()
       const el = document.createElement('DIV')
       if (this.prepend && targetEl.firstChild) {
-        targetEl.firstChild.inserBefore(el)
+        targetEl.insertBefore(el, targetEl.firstChild)
       } else {
         targetEl.append(el)
       }
@@ -85,9 +89,7 @@ export default Vue.extend({
     },
     unmount() {
       if (this.container) {
-        const el = this.container.$el
         this.container.$destroy()
-        el.parentNode.removeChild(el)
         delete this.container
       }
     },
