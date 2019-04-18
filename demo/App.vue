@@ -26,7 +26,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   max-width: 850px;
-  height: calc(100vh - 200px);
+  min-height: calc(100vh - 400px);
   border-bottom: 1px solid #ccc;
 }
 .nav {
