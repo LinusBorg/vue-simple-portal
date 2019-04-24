@@ -37,8 +37,8 @@ jobs:
       - run: yarn build
       - run: yarn test:unit --coverage
       - run: yarn test:e2e-ci
-      - store-articfacts:
+      - store_artifacts:
           path: /artifacts/e2e/video
-      - store-test-results:
+      - store_test_results:
           path: ./coverage
         
