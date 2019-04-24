@@ -58,7 +58,7 @@ describe('My First Test', () => {
         expect(children[1]).to.have.descendants('[data-test="test-header"]')
       })
   })
-  it.only('works with a custom target', function() {
+  it('works with a custom target', function() {
     cy.visit('/custom-target')
     cy.get('#custom-target')
       .as('ct')

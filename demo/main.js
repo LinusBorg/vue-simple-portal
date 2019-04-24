@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import SimplePortal, { config as PortalConfig } from '../src' // from '../package/dist/index.mjs'
+import SimplePortal, { config as PortalConfig } from '../package/dist/index.mjs' // from '../src'
 
 Vue.use(VueRouter)
 Vue.use(SimplePortal)
