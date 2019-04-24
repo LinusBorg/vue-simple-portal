@@ -3,6 +3,7 @@ node_modules
 /package/
 TODO.md
 
+/coverage
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 

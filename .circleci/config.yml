@@ -35,4 +35,10 @@ jobs:
 
       # run tests!
       - run: yarn build
-      - run: yarn test:unit
+      - run: yarn test:unit --coverage
+      - run: yarn test:e2e-ci
+      - store-articfacts:
+          path: /artifacts/e2e/video
+      - store-test-results:
+          path: ./coverage
+        
