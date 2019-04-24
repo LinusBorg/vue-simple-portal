@@ -11,7 +11,7 @@
     "sb:serve": "vue-cli-service storybook:serve -p 6006 -c stories/config",
     "sb:dev": "concurrently 'vue-devtools' 'vue-cli-service storybook:serve -p 6006 -c stories/config'",
     "test": "yarn test:unit && yarn test:e2e",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e": "vue-cli-service test:e2e --url http://localhost:8080",
     "test:unit": "vue-cli-service test:unit"
   },
   "devDependencies": {

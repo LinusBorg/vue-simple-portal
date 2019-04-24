@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 datat-test="test-header">This is just a Test Component</h3>
+    <h3 data-test="test-header">This is just a Test Component</h3>
     <p>
       Its purpose is to check the behaviour of components inside of the Simple
       Portal
@@ -11,14 +11,5 @@
 <script>
 export default {
   name: 'TestComponent',
-  /*mounted() {
-    console.log('TC:mounted')
-  },
-  updated() {
-    console.log('TC:updated')
-  },
-  beforeDestroy() {
-    console.log('TC:beforeDestroy')
-  },*/
 }
 </script>

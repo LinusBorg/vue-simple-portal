@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 data-test="disable-h1">Disabled State</h1>
+    <h1 dataTest="disable-h1">Disabled State</h1>
     <portal disabled>
       <Test />
     </portal>

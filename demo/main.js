@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import SimplePortal from '../package/dist/index.mjs'
+import SimplePortal, { config as PortalConfig } from '../src' // from '../package/dist/index.mjs'
 
 Vue.use(VueRouter)
 Vue.use(SimplePortal)
-
 const router = new VueRouter({
   mode: 'history',
   routes: [
@@ -38,5 +37,10 @@ document.body.append(customTarget)
 
 new Vue({
   router,
-  render: h => h(App),
+  render: h =>
+    h(App, {
+      props: {
+        selector: PortalConfig.selector,
+      },
+    }),
 }).$mount('#app')

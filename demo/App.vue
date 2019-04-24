@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" :data-selector="selector">
+    <h1>Demo App for VueSimplePortal</h1>
     <nav class="nav">
       <router-link to="/" exact>Base</router-link>
       <router-link to="/disable">Disable</router-link>
@@ -8,13 +9,16 @@
       <router-link to="/custom-target">Custom Target</router-link>
     </nav>
     <hr />
-    <router-view />
+    <div id="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
+  props: ['selector'],
 }
 </script>
 

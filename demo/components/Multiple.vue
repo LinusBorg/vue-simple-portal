@@ -6,7 +6,7 @@
     </portal>
     <br />
     <portal prepend>
-      <p data-test="multiple-p">Test String</p>
+      <p data-test="multiple-p">Test String from a second portal</p>
     </portal>
   </div>
 </template>

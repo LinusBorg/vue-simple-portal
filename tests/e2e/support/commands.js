@@ -23,3 +23,16 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('portalSelector', () => {
+  cy.get('#app').then(([el]) => {
+    return el.dataset['selector']
+  })
+})
+
+Cypress.Commands.add('portalTarget', customSelector => {
+  cy.portalSelector().then(defaultSelector => {
+    const selector = customSelector || defaultSelector
+    return cy.get(`#${selector}`)
+  })
+})
