@@ -1,5 +1,7 @@
 # vue-simple-portal
 
+NOT PUBLISHED YET
+
 <!-- markdownlint-disable MD025 MD033 -->
 
 ## What this is
@@ -12,6 +14,17 @@ Its main usecase are components/elements that need to be positioned absolutely r
 * drodowns
 * Alerts/notifications
 * Toasts
+
+## Installation
+
+> Since this package hasn't been published yet, this won't work.
+> It will be released soon.
+
+```bash
+npm install -D @linusborg/vue-simple-portal
+# or
+yarn add -D @linusborg/vue-simple-portal
+```
 
 ## Usage
 
@@ -41,6 +54,21 @@ Minimal example:
     })
   </script>
 </body>
+```
+
+Usage with a Bundler:
+
+```javascript
+import Vue from 'vue'
+import Portal from '@linusborg/vue-simple-portal'
+import App from './App.vue'
+
+Vue.use(Portal)
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
 ```
 
 TODO: Insert jsfiddle
