@@ -32,7 +32,7 @@ jobs:
       - save_cache:
           paths:
             - ~/cache
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{.Branch}}-{{ checksum "package.json" }}
 
       # run tests!
       - run: yarn build
