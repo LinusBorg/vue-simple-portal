@@ -1,7 +1,7 @@
 
 /**
  * vue-simple-portal
- * version: 0.0.0,
+ * version: 0.1.0,
  * (c) Thorsten Lünborg, 2019
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
