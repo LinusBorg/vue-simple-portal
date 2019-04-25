@@ -153,7 +153,7 @@ So it's even easier than in the Usage Example from above:
 </portal>
 ```
 
-### Customizing the selector.
+### Customizing the selector
 
 As shown in the initial Usage Example, you can use the `selector` prop to append to an element of your choosing.
 
@@ -171,8 +171,6 @@ If you don't want to install the plugin globally, you can use the `setSelector` 
 import { setSelector } from '@œlinusborg/vue-simple-portal'
 setSelector('#your-target')
 ```
-
-
 
 ## Props
 
