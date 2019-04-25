@@ -1,6 +1,7 @@
 {
-  "name": "vue-simple-portal",
-  "description": "A simple Portal implementation for Vue, to mount slot content to any element",
+  "name": "@linusborg/vue-simple-portal",
+  "description": "A simple Portal implementation for Vue, to mount slot content to another element",
+  "version": "0.1.0",
   "author": {
     "name": "Thorsten Lünborg",
     "url": "https://www.github.com/linusborg"
@@ -9,23 +10,14 @@
     "type": "git",
     "url": "https://github.com/linusborg/vue-simple-portal"
   },
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
-  },
-  "main": "./dist/VuePortal.umd.js",
-  "browser": "./dist/VuePortal.common.js",
-  "unpkg": "./dist/VuePortal.umd.min.js",
-  "jsDelivr": "./dist/VuePortal.umd.min.js",
+  "private": false,
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "unpkg": "./dist/index.umd.min.js",
+  "jsDelivr": "./dist/index.umd.min.js",
   "files": [
     "dist",
-    "src",
-    "types"
+    "src"
   ],
   "dependencies": {
     "nanoid": "^2.0.1"
@@ -33,17 +25,7 @@
   "peerDependencies": {
     "vue": "^2.6.6"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+  "publishConfig": {
+    "access": "public"
   }
 }

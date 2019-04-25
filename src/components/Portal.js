@@ -1,19 +1,19 @@
 import Vue from 'vue'
-import config from '../config'
+import config, { isBrowser } from '../config'
 import TargetContainer from './TargetContainer'
 
 export default Vue.extend({
-  name: 'VuePortal',
+  name: 'VueSimplePortal',
   props: {
-    append: {
+    disabled: {
       type: Boolean,
     },
-    disabled: {
+    prepend: {
       type: Boolean,
     },
     selector: {
       type: String,
-      default: () => config.selector,
+      default: () => `#${config.selector}`,
     },
     tag: {
       type: String,
@@ -22,16 +22,22 @@ export default Vue.extend({
   },
   render(h) {
     if (this.disabled) {
-      return h(this.tag, this.$scopedSlots.default())
+      const nodes = this.$scopedSlots && this.$scopedSlots.default()
+      if (!nodes) return h()
+      return nodes.length < 2 && !nodes[0].text ? nodes : h(this.tag, nodes)
     }
     return h()
   },
   created() {
-    if (!this.getEl()) {
-      this.insertContainerEl()
+    if (!this.getTargetEl()) {
+      this.insertTargetEl()
     }
   },
   updated() {
+    // We only update the target container component
+    // if the scoped slot function is a fresh one
+    // The new slot syntax (since Vue 2.6) can cache unchanged slot functions
+    // and we want to respect that here.
     this.$nextTick(() => {
       if (!this.disabled && this.slotFn !== this.$scopedSlots.default) {
         this.container.updatedNodes = this.$scopedSlots.default
@@ -51,27 +57,27 @@ export default Vue.extend({
     },
   },
   methods: {
-    getEl() {
+    // This returns the element into which the content should be mounted.
+    getTargetEl() {
+      if (!isBrowser) return
       return document.querySelector(this.selector)
     },
-    insertContainerEl() {
+    insertTargetEl() {
+      if (!isBrowser) return
       const parent = document.querySelector('body')
       const child = document.createElement(this.tag)
-      child.id = this.selector
-
-      if (this.append) {
-        parent.firstChild
-          ? parent.firstChild.inserBefore(child)
-          : parent.append(child)
-      } else {
-        parent.append(child)
-      }
+      child.id = config.selector
+      parent.append(child)
     },
     mount() {
-      // console.log('mounting')
-      const targetEl = this.getEl()
+      const targetEl = this.getTargetEl()
       const el = document.createElement('DIV')
-      targetEl.append(el)
+      if (this.prepend && targetEl.firstChild) {
+        targetEl.insertBefore(el, targetEl.firstChild)
+      } else {
+        targetEl.append(el)
+      }
+
       this.container = new TargetContainer({
         el,
         parent: this,
@@ -82,11 +88,8 @@ export default Vue.extend({
       })
     },
     unmount() {
-      // console.log('unmounting')
       if (this.container) {
-        const el = this.container.$el
         this.container.$destroy()
-        el.parentNode.removeChild(el)
         delete this.container
       }
     },
