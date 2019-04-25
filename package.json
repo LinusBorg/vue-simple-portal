@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
     "serve": "vue-cli-service serve demo/main.js",
-    "build": "rimraf -r package/dist && rimraf -r package/src && yarn build:bili && yarn build:src && cp README.md package/README.md && cp LICENCE package/LICENCE",
+    "build": "rimraf -r package/dist && rimraf -r package/src && yarn build:bili && yarn build:src && cp LICENCE package/LICENCE",
     "build:src": "babel src --out-dir package/src --ignore \"src/main.js\",\"src/index.stories.js\"",
     "build:bili": "bili --format umd --format umd-min --format es --module-name VueSimplePortal -d package/dist",
     "sb:build": "vue-cli-service storybook:build -c stories/config",
