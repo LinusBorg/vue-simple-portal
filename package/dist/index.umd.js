@@ -62,7 +62,7 @@
   });
 
   var Portal = Vue.extend({
-    name: 'VuePortal',
+    name: 'VueSimplePortal',
     props: {
       disabled: {
         type: Boolean

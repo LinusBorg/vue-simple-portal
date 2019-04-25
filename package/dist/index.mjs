@@ -56,7 +56,7 @@ var TargetContainer = Vue.extend({
 });
 
 var Portal = Vue.extend({
-  name: 'VuePortal',
+  name: 'VueSimplePortal',
   props: {
     disabled: {
       type: Boolean
