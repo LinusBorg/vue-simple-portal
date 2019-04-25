@@ -1,7 +1,5 @@
 # vue-simple-portal
 
-NOT PUBLISHED YET
-
 <!-- markdownlint-disable MD024 MD025 MD033 -->
 
 ## What this is
@@ -15,14 +13,14 @@ Its main usecase are components/elements that need to be positioned absolutely r
 * Alerts/notifications
 * Toasts
 
-## Usage
+## Usage Example
 
 Minimal example:
 
 ```html
 <body>
   <script src="https://unkpg.com/vue/dist/vue.js"></script>
-  <script src="https://unkpg.com/vue-simple-portal"></script>
+  <script src="https://unkpg.com/@linusborg/vue-simple-portal"></script>
   <div id="app">
     <-- your Vue app mounts to this element -->
   </div>
@@ -89,9 +87,6 @@ So I experimented a little and came up with this library here, which solves thes
 
 ### NPM / Yarn
 
-> Since this package hasn't been published yet, this won't work.
-> It will be released soon.
-
 ```bash
 npm install -D @linusborg/vue-simple-portal
 # or
@@ -105,7 +100,7 @@ This will make the `<portal>` component available globally, but also make the po
 ```javascript
 // main.js
 import Vue from 'vue'
-import VuePortal from '@inusborg/vue-simple-portal'
+import VuePortal from '@linusborg/vue-simple-portal'
 
 Vue.use(VuePortal, {
   name: 'portal', // optional, use to rename component
@@ -116,14 +111,14 @@ Vue.use(VuePortal, {
 
 ```javascript
 // in a component definition
-import { Portal } from '@inusborg/vue-simple-portal'
+import { Portal } from '@linusborg/vue-simple-portal'
 export default {
   name 'MyComponent',
   components: {
     Portal
   }
 }
-````
+```
 
 ### Browser
 
@@ -137,6 +132,47 @@ Just include it with a script tag *after* Vue itself
 ```
 
 The plugin will automatically register the `<portal>` component globally.
+
+## Usage Notes
+
+`<portal>` works out of the box without setting any props. By default, it will:
+
+1. Create a randomized id selector (once)
+2. Append a `<div>` with that id to the `<body>` (once)
+3. Append any `<portal>`'s slot content as a small, transparent component to that `<div>`
+
+Which means the content is not an almost direct decendant of `<body>`, and can safely and reliably be positioned absolutely etc.
+
+So it's even easier than in the Usage Example from above:
+
+```html
+<portal>
+  <p>This will be mounted as a child element
+  of the auto-generated <div> instead of
+  somewhere inside the child tree of <div id="app">
+</portal>
+```
+
+### Customizing the selector.
+
+As shown in the initial Usage Example, you can use the `selector` prop to append to an element of your choosing.
+
+If you are tired of specifying the selector over and over again, you can set it as the default selector, overwriting the randomly generated one:
+
+```javascript
+Vue.use(VuePortal, {
+  selector: '#your-target',
+})
+```
+
+If you don't want to install the plugin globally, you can use the `setSelector` helper:
+
+```javascript
+import { setSelector } from '@œlinusborg/vue-simple-portal'
+setSelector('#your-target')
+```
+
+
 
 ## Props
 
@@ -248,7 +284,7 @@ As a last resort you can always use a Timeout if yu know the duration of the lea
 
 If the slot content of the `<portal>` contains components, they will show up as children of the `<portal>` in the devtools, even though their root elements were mounted/moved to the target element, outside of the current component tree.
 
-### Target elements inside of your Vue app
+### Targeting elements inside of your Vue app
 
 The general advise is to only mount to elements *outside* of your Vue app, as that's the prime use case of this library. If you need to mount to locations *inside of* your app, consider using [portal-vue](https://portal-vue.linusb.org) instead.
 
