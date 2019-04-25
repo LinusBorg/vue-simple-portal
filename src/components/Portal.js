@@ -3,7 +3,7 @@ import config, { isBrowser } from '../config'
 import TargetContainer from './TargetContainer'
 
 export default Vue.extend({
-  name: 'VuePortal',
+  name: 'VueSimplePortal',
   props: {
     disabled: {
       type: Boolean,
