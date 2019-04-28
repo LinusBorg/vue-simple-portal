@@ -99,7 +99,7 @@ This will make the `<portal>` component available globally, but also make the po
 
 ```javascript
 // main.js
-import Vue from 'vue'
+import Vue from 'vue' // reuqires Vue >= 2.6
 import VuePortal from '@linusborg/vue-simple-portal'
 
 Vue.use(VuePortal, {

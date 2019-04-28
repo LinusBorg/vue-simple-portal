@@ -1,5 +1,5 @@
 {
-  "name": "@linusborg/vue-simple-portal",
+  "name": "vue-simple-portal",
   "private": true,
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
