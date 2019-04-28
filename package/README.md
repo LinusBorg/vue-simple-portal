@@ -4,7 +4,7 @@
 
 ## What this is
 
-`vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on he page) as an immediate child.
+`vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on the page) as an immediate child.
 
 Its main usecase are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
 
