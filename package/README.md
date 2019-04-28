@@ -19,8 +19,8 @@ Minimal example:
 
 ```html
 <body>
-  <script src="https://unkpg.com/vue/dist/vue.js"></script>
-  <script src="https://unkpg.com/@linusborg/vue-simple-portal"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/@linusborg/vue-simple-portal"></script>
   <div id="app">
     <-- your Vue app mounts to this element -->
   </div>
@@ -126,8 +126,8 @@ Just include it with a script tag *after* Vue itself
 
 ```html
 <head>
-  <script src="https://unkpg.com/vue/dist/vue.js"></script>
-  <script src="https://unkpg.com/vue-simple-portal"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-simple-portal"></script>
 </head>
 ```
 
