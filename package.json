@@ -16,6 +16,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
     "@storybook/addon-actions": "^4.1.0 || ^5.0.0",
     "@storybook/addon-knobs": "^4.1.0 || ^5.0.0",
     "@storybook/addon-links": "^4.1.0 || ^5.0.0",
@@ -33,18 +34,17 @@
     "babel-jest": "^23.6.0",
     "bili": "^4.7.2",
     "concurrently": "^4.1.0",
-    "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^5.8.0",
     "lint-staged": "^8.1.0",
-    "nanoid": "^2.0.1",
     "prettier-eslint": "^8.8.2",
     "rimraf": "^2.6.3",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-vue": "^4.7.2",
-    "vue": "^2.6.9",
     "vue-cli-plugin-storybook": "^0.6.1",
     "vue-router": "^3.0.4",
-    "vue-template-compiler": "^2.6.9"
+    "vue-template-compiler": "^2.6.9",
+    "vue": "^2.6.9"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -63,6 +63,6 @@
     "vue": "^2.6.9"
   },
   "dependencies": {
-    "@babel/cli": "^7.4.3"
+    "nanoid": "^2.0.1"
   }
 }
