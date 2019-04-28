@@ -4,7 +4,7 @@
 
 ## What this is
 
-`vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on he page) as an immediate child.
+`vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on the page) as an immediate child.
 
 Its main usecase are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
 
@@ -99,7 +99,7 @@ This will make the `<portal>` component available globally, but also make the po
 
 ```javascript
 // main.js
-import Vue from 'vue'
+import Vue from 'vue' // reuqires Vue >= 2.6
 import VuePortal from '@linusborg/vue-simple-portal'
 
 Vue.use(VuePortal, {
@@ -153,7 +153,7 @@ So it's even easier than in the Usage Example from above:
 </portal>
 ```
 
-### Customizing the selector.
+### Customizing the selector
 
 As shown in the initial Usage Example, you can use the `selector` prop to append to an element of your choosing.
 
@@ -171,8 +171,6 @@ If you don't want to install the plugin globally, you can use the `setSelector` 
 import { setSelector } from '@œlinusborg/vue-simple-portal'
 setSelector('#your-target')
 ```
-
-
 
 ## Props
 

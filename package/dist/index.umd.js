@@ -1,19 +1,18 @@
 
 /**
  * vue-simple-portal
- * version: 0.1.0,
+ * version: 0.1.1,
  * (c) Thorsten Lünborg, 2019
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
 */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue'), require('nanoid/non-secure')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'vue', 'nanoid/non-secure'], factory) :
-  (global = global || self, factory(global.VueSimplePortal = {}, global.Vue, global.id));
-}(this, function (exports, Vue, id) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
+  (global = global || self, factory(global.VueSimplePortal = {}, global.Vue));
+}(this, function (exports, Vue) { 'use strict';
 
   Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
-  id = id && id.hasOwnProperty('default') ? id['default'] : id;
 
   function _typeof(obj) {
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -29,8 +28,37 @@
     return _typeof(obj);
   }
 
+  var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz';
+
+  /**
+   * Generate URL-friendly unique ID. This method use non-secure predictable
+   * random generator.
+   *
+   * By default, ID will have 21 symbols to have a collision probability similar
+   * to UUID v4.
+   *
+   * @param {number} [size=21] The number of symbols in ID.
+   *
+   * @return {string} Random string.
+   *
+   * @example
+   * const nanoid = require('nanoid/non-secure')
+   * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
+   *
+   * @name nonSecure
+   * @function
+   */
+  var nonSecure = function (size) {
+    size = size || 21;
+    var id = '';
+    while (0 < size--) {
+      id += url[Math.random() * 64 | 0];
+    }
+    return id
+  };
+
   var config = {
-    selector: "vue-portal-target-".concat(id())
+    selector: "vue-portal-target-".concat(nonSecure())
   };
   var setSelector = function setSelector(selector) {
     return config.selector = selector;
