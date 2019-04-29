@@ -22,7 +22,7 @@ Minimal example:
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/@linusborg/vue-simple-portal"></script>
   <div id="app">
-    <-- your Vue app mounts to this element -->
+    <!-- your Vue app mounts to this element -->
   </div>
 
   <div id="portal-target">
@@ -53,9 +53,9 @@ I'm the author of [portal-vue](https://github.com/LinusBorg/portal-vue), a prett
 
 _Why publish another Portal component?_
 
-Well, `portal-vue` was my first sucessful library, and I wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
+Well, `portal-vue` was my first successful library, and I wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
 
-That' turned out pretty well, but there were two issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features and (= bundle size) in order to concentrate on the main use case.
+That turned out pretty well, but also means the library is not exactly *tiny* anymore, and there also were a few issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features and (= bundle size) in order to concentrate on the main use case.
 
 <details>
   <summary>
