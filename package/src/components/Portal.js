@@ -71,7 +71,7 @@ export default Vue.extend({
       if (!isBrowser) return;
       var parent = document.querySelector('body');
       var child = document.createElement(this.tag);
-      child.id = config.selector;
+      child.id = this.selector.substring(1);
       parent.append(child);
     },
     mount: function mount() {
