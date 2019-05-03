@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import SimplePortal, { config as PortalConfig } from '../package/dist/index.mjs' // from '../src'
+import SimplePortal, {
+  config as PortalConfig,
+} from /*'../src'*/ '../package/dist/index.mjs'
 
 Vue.use(VueRouter)
 Vue.use(SimplePortal)
@@ -31,9 +33,6 @@ const router = new VueRouter({
   ],
 })
 Vue.config.productionTip = false
-const customTarget = document.createElement('DIV')
-customTarget.id = 'custom-target'
-document.body.append(customTarget)
 
 new Vue({
   router,

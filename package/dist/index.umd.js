@@ -1,7 +1,7 @@
 
 /**
  * vue-simple-portal
- * version: 0.1.1,
+ * version: 0.1.2,
  * (c) Thorsten Lünborg, 2019
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
@@ -159,7 +159,7 @@
         if (!isBrowser) return;
         var parent = document.querySelector('body');
         var child = document.createElement(this.tag);
-        child.id = config.selector;
+        child.id = this.selector.substring(1);
         parent.append(child);
       },
       mount: function mount() {
