@@ -6,7 +6,7 @@
 
 `vue-simple-portal` allows you to mount its slot content to the very end of the body element (or potentially any other DOM element on the page) as an immediate child.
 
-Its main usecase are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
+Its main use case are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
 
 * modals
 * drodowns
@@ -31,6 +31,7 @@ Minimal example:
 
   <script>
     new Vue({
+      el: '#app',
       template: `
       <div>
         <portal selector="#portal-target">
@@ -38,7 +39,7 @@ Minimal example:
           of <div id="portal-parget"> instead of
           somewhere inside the child tree of <div id="app">
         </portal>
-      <div>
+      </div>
       `
     })
   </script>
@@ -55,7 +56,7 @@ _Why publish another Portal component?_
 
 Well, `portal-vue` was my first successful library, and I wanted it to be _awesome_, so I packed it full of features to portal _anything_ to _anywhere_, _anytime_ you want.
 
-That turned out pretty well, but also means the library is not exactly *tiny* anymore, and there also were a few issues that I found over time, so I wrote a smaller lib that adresses these issues while sliming down on features and (= bundle size) in order to concentrate on the main use case.
+That turned out pretty well, but also means the library is not exactly *tiny* anymore, and there also were a few issues that I found over time, so I wrote a smaller lib that addresses these issues while slimming down on features and (= bundle size) in order to concentrate on the main use case.
 
 <details>
   <summary>
@@ -99,7 +100,7 @@ This will make the `<portal>` component available globally, but also make the po
 
 ```javascript
 // main.js
-import Vue from 'vue' // reuqires Vue >= 2.6
+import Vue from 'vue' // requires Vue >= 2.6
 import VuePortal from '@linusborg/vue-simple-portal'
 
 Vue.use(VuePortal, {
@@ -168,7 +169,7 @@ Vue.use(VuePortal, {
 If you don't want to install the plugin globally, you can use the `setSelector` helper:
 
 ```javascript
-import { setSelector } from '@œlinusborg/vue-simple-portal'
+import { setSelector } from '@linusborg/vue-simple-portal'
 setSelector('#your-target')
 ```
 
@@ -186,7 +187,7 @@ A query selector that defines the **target element** to which to append the cont
 
 If no selector is given, a random default selector (created at startup) is used.
 
-I no element matches the selector, a new element is created and appended to `<body>`
+If no element matches the selector, a new element is created and appended to `<body>`
 
 Consequently, this means that using the `<portal>` without a `selector` prop will always append to a div at the end of the `<body>` element, which is a sensible default for the goal of this plugin.
 
@@ -261,7 +262,7 @@ If you need to remove or disable the portal *after* a transition has finished, y
     }),
     methods: {
       getOut() {
-        // calling this method this will trigger the transition,
+        // calling this method will trigger the transition,
         // which when finished, will disable the Portal
         // through the `afterLeave` hook callback
         this.showTransitionContent = false
@@ -274,7 +275,7 @@ If you need to remove or disable the portal *after* a transition has finished, y
 
 Of course this only works if you actually can listen to the events of the  `<transition>`, and could be problematic or even impossible with 3rd-Party components, depending on their implementations.
 
-As a last resort you can always use a Timeout if yu know the duration of the leave transition.
+As a last resort you can always use a Timeout if you know the duration of the leave transition.
 
 </details>
 
@@ -284,7 +285,7 @@ If the slot content of the `<portal>` contains components, they will show up as 
 
 ### Targeting elements inside of your Vue app
 
-The general advise is to only mount to elements *outside* of your Vue app, as that's the prime use case of this library. If you need to mount to locations *inside of* your app, consider using [portal-vue](https://portal-vue.linusb.org) instead.
+The general advice is to only mount to elements *outside* of your Vue app, as that's the prime use case of this library. If you need to mount to locations *inside of* your app, consider using [portal-vue](https://portal-vue.linusb.org) instead.
 
 That being said, you *can* move content to an element that is controlled by Vue, i.e. is part of the template of some other component.
 
