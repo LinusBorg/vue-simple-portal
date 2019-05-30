@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import '@babel/polyfill'
 import SimplePortal, {
   config as PortalConfig,
 } from /*'../src'*/ '../package/dist/index.mjs'

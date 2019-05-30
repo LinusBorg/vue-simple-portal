@@ -67,7 +67,7 @@ export default Vue.extend({
       const parent = document.querySelector('body')
       const child = document.createElement(this.tag)
       child.id = this.selector.substring(1)
-      parent.append(child)
+      parent.appendChild(child)
     },
     mount() {
       const targetEl = this.getTargetEl()
@@ -75,7 +75,7 @@ export default Vue.extend({
       if (this.prepend && targetEl.firstChild) {
         targetEl.insertBefore(el, targetEl.firstChild)
       } else {
-        targetEl.append(el)
+        targetEl.appendChild(el)
       }
 
       this.container = new TargetContainer({
