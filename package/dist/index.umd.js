@@ -1,7 +1,7 @@
 
 /**
  * vue-simple-portal
- * version: 0.1.2,
+ * version: 0.1.3,
  * (c) Thorsten Lünborg, 2019
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
@@ -160,7 +160,7 @@
         var parent = document.querySelector('body');
         var child = document.createElement(this.tag);
         child.id = this.selector.substring(1);
-        parent.append(child);
+        parent.appendChild(child);
       },
       mount: function mount() {
         var targetEl = this.getTargetEl();
@@ -169,7 +169,7 @@
         if (this.prepend && targetEl.firstChild) {
           targetEl.insertBefore(el, targetEl.firstChild);
         } else {
-          targetEl.append(el);
+          targetEl.appendChild(el);
         }
 
         this.container = new TargetContainer({
