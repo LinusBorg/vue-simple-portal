@@ -215,7 +215,7 @@ Set the `prepend` prop if you want to *prepend* the content instead.
 |------|-------|------|
 |String|no     |'DIV' |
 
-When the content of `<poral>` is appended to the target element, it's actually wrapped in a small, transparent component (for technical reasons). Like all (*non-functional*) components in Vue, it requires a single root element.
+When the content of `<portal>` is appended to the target element, it's actually wrapped in a small, transparent component (for technical reasons). Like all (*non-functional*) components in Vue, it requires a single root element.
 
 The `tag` prop can be used to define what that element should be.
 
