@@ -1,5 +1,6 @@
 {
   "name": "vue-simple-portal",
+  "licence": "Apache-2.0",
   "private": true,
   "scripts": {
     "lint": "vue-cli-service lint src/**/*.js demo/**/*.js tests/**/*.js ./*.js",
