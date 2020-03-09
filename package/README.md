@@ -80,7 +80,7 @@ So I experimented a little and came up with this library here, which solves thes
 ### When to use which
 
 * Use `vue-simple-portal` when you want to move stuff to the end of the document only.
-* Use `portal-vue` when you want to do more edge-case things, i.e. move stuff around to anywhere *within* our existing app, like the header component area, dynamically move the same content to different places by changing the destination prop etc.
+* Use `portal-vue` when you want to do more edge-case things, i.e. move stuff around to anywhere *within* your existing app, like the header component area, dynamically move the same content to different places by changing the destination prop etc.
 
 </details>
 
