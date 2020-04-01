@@ -19,6 +19,8 @@ export default Vue.extend({
   },
   destroyed() {
     const { $el: el } = this
-    el.parentNode.removeChild(el)
+    if (el.parentNode) {
+      el.parentNode.removeChild(el)
+    }
   },
 })
