@@ -3,6 +3,9 @@
     <h1>Demo App for VueSimplePortal</h1>
     <nav class="nav">
       <router-link to="/" exact>Base</router-link>
+      <router-link to="/condition" exact>
+        Base With condition component inside portal
+      </router-link>
       <router-link to="/disable">Disable</router-link>
       <router-link to="/transition">Transition</router-link>
       <router-link to="/multiple">Multiple</router-link>
