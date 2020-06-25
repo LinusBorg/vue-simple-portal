@@ -142,7 +142,7 @@ The plugin will automatically register the `<portal>` component globally.
 2. Append a `<div>` with that id to the `<body>` (once)
 3. Append any `<portal>`'s slot content as a small, transparent component to that `<div>`
 
-Which means the content is not an almost direct decendant of `<body>`, and can safely and reliably be positioned absolutely etc.
+Which means the content is now an almost direct decendant of `<body>`, and can safely and reliably be positioned absolutely etc.
 
 So it's even easier than in the Usage Example from above:
 
