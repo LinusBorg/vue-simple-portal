@@ -1,7 +1,7 @@
-import id from 'nanoid/non-secure'
+import { nanoid } from 'nanoid/non-secure'
 
 const config = {
-  selector: `vue-portal-target-${id()}`,
+  selector: `vue-portal-target-${nanoid()}`,
 }
 export default config
 
