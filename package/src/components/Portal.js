@@ -75,6 +75,7 @@ export default Vue.extend({
       parent.appendChild(child);
     },
     mount: function mount() {
+      if (!isBrowser) return;
       var targetEl = this.getTargetEl();
       var el = document.createElement('DIV');
 
