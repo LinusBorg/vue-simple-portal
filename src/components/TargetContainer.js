@@ -14,7 +14,7 @@ export default Vue.extend({
     const nodes = this.updatedNodes && this.updatedNodes()
     if (!nodes) return h()
     return nodes.length < 2 && !nodes[0].text
-      ? nodes
+      ? h(nodes[0].tag, nodes[0].data, nodes[0].children)
       : h(this.tag || 'DIV', nodes)
   },
   destroyed() {
