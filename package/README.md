@@ -36,7 +36,7 @@ Minimal example:
       <div>
         <portal selector="#portal-target">
           <p>This will be mounted as a child element
-          of <div id="portal-parget"> instead of
+          of <div id="portal-target"> instead of
           somewhere inside the child tree of <div id="app">
         </portal>
       </div>
