@@ -47,6 +47,19 @@ describe('My First Test', () => {
         expect(this.el).to.not.have.descendants('[data-test="test-header"]')
       })
   })
+  it('correct destroy component inside portal with condition prop', function() {
+    cy.visit('/condition')
+    cy.portalTarget()
+      .as('el')
+      .then(el => {
+        expect(el).to.not.be.undefined
+
+        cy.get('#toggle-button').click()
+        return cy.wait(500)
+      })
+    cy.visit('/')
+    expect(this.el).to.not.have.descendants('[data-test="test-header"]')
+  })
   it('works with multiple portals sending content', function() {
     cy.visit('/multiple')
     cy.portalTarget()
