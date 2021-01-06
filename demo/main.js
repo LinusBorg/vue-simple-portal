@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import '@babel/polyfill'
 import SimplePortal, {
   config as PortalConfig,
-} from /*'../src'*/ '../package/dist/index.mjs'
+} from /*'../src'*/ '../package/dist/index.esm.js'
 
 Vue.use(VueRouter)
 Vue.use(SimplePortal)
