@@ -4,6 +4,7 @@ export default Vue.extend({
   // the $parent chain of components.
   // which means the next parent of any component rendered inside of this oen
   // will be the parent from which is was portal'd
+  // @ts-expect-error
   abstract: true,
   name: 'PortalOutlet',
   props: ['nodes', 'tag'],
@@ -13,12 +14,12 @@ export default Vue.extend({
   render(h) {
     const nodes = this.updatedNodes && this.updatedNodes()
     if (!nodes) return h()
-    return nodes.length < 2 && !nodes[0].text
+    return nodes.length === 1 && !nodes[0].text
       ? nodes
       : h(this.tag || 'DIV', nodes)
   },
   destroyed() {
     const { $el: el } = this
-    el.parentNode.removeChild(el)
+    el && el.parentNode.removeChild(el)
   },
 })
