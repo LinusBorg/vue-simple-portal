@@ -109,6 +109,7 @@ describe('Basic Features', () => {
       })
 
       await tick()
+      await tick()
 
       expect(document.querySelector('[data-test="2"]').textContent).toBe('B')
     })

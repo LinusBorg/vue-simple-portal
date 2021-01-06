@@ -2,7 +2,7 @@
 /**
  * vue-simple-portal
  * version: 0.1.4,
- * (c) Thorsten Lünborg, 2019
+ * (c) Thorsten Lünborg, 2020
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
 */
@@ -10,11 +10,13 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
   typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
   (global = global || self, factory(global.VueSimplePortal = {}, global.Vue));
-}(this, function (exports, Vue) { 'use strict';
+}(this, (function (exports, Vue) { 'use strict';
 
-  Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
+  Vue = Vue && Object.prototype.hasOwnProperty.call(Vue, 'default') ? Vue['default'] : Vue;
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -28,37 +30,24 @@
     return _typeof(obj);
   }
 
-  var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz';
+  // This alphabet uses `A-Za-z0-9_-` symbols. The genetic algorithm helped
+  // optimize the gzip compression for this alphabet.
+  let urlAlphabet =
+    'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW';
 
-  /**
-   * Generate URL-friendly unique ID. This method use non-secure predictable
-   * random generator.
-   *
-   * By default, ID will have 21 symbols to have a collision probability similar
-   * to UUID v4.
-   *
-   * @param {number} [size=21] The number of symbols in ID.
-   *
-   * @return {string} Random string.
-   *
-   * @example
-   * const nanoid = require('nanoid/non-secure')
-   * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
-   *
-   * @name nonSecure
-   * @function
-   */
-  var nonSecure = function (size) {
-    size = size || 21;
-    var id = '';
-    while (0 < size--) {
-      id += url[Math.random() * 64 | 0];
+  let nanoid = (size = 21) => {
+    let id = '';
+    // A compact alternative for `for (var i = 0; i < step; i++)`.
+    let i = size;
+    while (i--) {
+      // `| 0` is more compact and faster than `Math.floor()`.
+      id += urlAlphabet[(Math.random() * 64) | 0];
     }
     return id
   };
 
   var config = {
-    selector: "vue-portal-target-".concat(nonSecure())
+    selector: "vue-portal-target-".concat(nanoid())
   };
   var setSelector = function setSelector(selector) {
     return config.selector = selector;
@@ -163,6 +152,7 @@
         parent.appendChild(child);
       },
       mount: function mount() {
+        if (!isBrowser) return;
         var targetEl = this.getTargetEl();
         var el = document.createElement('DIV');
 
@@ -212,4 +202,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

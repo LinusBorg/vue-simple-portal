@@ -2,14 +2,16 @@
 /**
  * vue-simple-portal
  * version: 0.1.4,
- * (c) Thorsten Lünborg, 2019
+ * (c) Thorsten Lünborg, 2020
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
 */
 import Vue from 'vue';
-import id from 'nanoid/non-secure';
+import { nanoid } from 'nanoid/non-secure';
 
 function _typeof(obj) {
+  "@babel/helpers - typeof";
+
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function (obj) {
       return typeof obj;
@@ -24,7 +26,7 @@ function _typeof(obj) {
 }
 
 var config = {
-  selector: "vue-portal-target-".concat(id())
+  selector: "vue-portal-target-".concat(nanoid())
 };
 var setSelector = function setSelector(selector) {
   return config.selector = selector;
@@ -129,6 +131,7 @@ var Portal = Vue.extend({
       parent.appendChild(child);
     },
     mount: function mount() {
+      if (!isBrowser) return;
       var targetEl = this.getTargetEl();
       var el = document.createElement('DIV');
 
