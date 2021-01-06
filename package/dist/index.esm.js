@@ -1,8 +1,8 @@
 
 /**
  * vue-simple-portal
- * version: 0.1.4,
- * (c) Thorsten Lünborg, 2020
+ * version: 0.1.5,
+ * (c) Thorsten Lünborg, 2021 - present
  * LICENCE: Apache-2.0
  * http://github.com/linusborg/vue-simple-portal
 */
@@ -38,6 +38,7 @@ var TargetContainer = Vue.extend({
   // the $parent chain of components.
   // which means the next parent of any component rendered inside of this oen
   // will be the parent from which is was portal'd
+  // @ts-expect-error
   abstract: true,
   name: 'PortalOutlet',
   props: ['nodes', 'tag'],
@@ -49,11 +50,11 @@ var TargetContainer = Vue.extend({
   render: function render(h) {
     var nodes = this.updatedNodes && this.updatedNodes();
     if (!nodes) return h();
-    return nodes.length < 2 && !nodes[0].text ? nodes : h(this.tag || 'DIV', nodes);
+    return nodes.length === 1 && !nodes[0].text ? nodes : h(this.tag || 'DIV', nodes);
   },
   destroyed: function destroyed() {
     var el = this.$el;
-    el.parentNode.removeChild(el);
+    el && el.parentNode.removeChild(el);
   }
 });
 
