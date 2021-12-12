@@ -8,8 +8,8 @@
 
 Its main use case are components/elements that need to be positioned absolutely relative to the document/viewport, or fixed in some way or another, like:
 
-* modals
-* drodowns
+* Modals
+* Dropdowns
 * Alerts/notifications
 * Toasts
 
