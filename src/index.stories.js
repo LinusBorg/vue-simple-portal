@@ -25,7 +25,7 @@ stories
     template: `
     <Wrapper #default>
       <Portal selector="#target" #default>
-        <p>This content was magically moved to the end of the &lt;body&gt;</p>
+        <p>This content was magically moved to <code>#target</code></p>
       </Portal>
     </Wrapper>`,
     methods: { action: action('clicked') },
