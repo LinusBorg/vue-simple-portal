@@ -38,7 +38,7 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.0",
-    "nanoid": "^3.1.20",
+    "nanoid": "^3.1.31",
     "prettier-eslint": "^8.8.2",
     "rimraf": "^2.6.3",
     "rollup-plugin-commonjs": "^9.3.4",
